@@ -16,9 +16,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 20,
+    alignItems: 'center',
   },
   cityName: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '500',
+    paddingLeft: 10,
   },
 });
