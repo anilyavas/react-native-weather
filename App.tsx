@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-const url = `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=31cdf7c2dad66944c8801a652ff06d61&units=metric`;
+const BASE_URL = `https://api.openweathermap.org/data/2.5/weather`;
+const OPEN_WEATHER_KEY = process.env.EXPO_PUBLIC_OPEN_WEATHER_KEY;
 
 const WeatherScreen = () => {
   const [weather, setWeather] = useState<Weather>();
   const fetchWeather = async () => {
+    const lat = 44.34;
+    const lon = 10.99;
     //fetch data
-    const results = await fetch(url);
+    const results = await fetch(
+      `${BASE_URL}?lat=${lat}&lon=${lon}&appid=${OPEN_WEATHER_KEY}&units=metric`
+    );
     const data = await results.json();
     console.log(JSON.stringify(data, null, 2));
     setWeather(data);
