@@ -3,19 +3,6 @@ import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
 const url = `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=31cdf7c2dad66944c8801a652ff06d61&units=metric`;
 
-type Weather = {
-  name: string;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-    sea_level: number;
-    grnd_level: number;
-  };
-};
 const WeatherScreen = () => {
   const [weather, setWeather] = useState<Weather>();
   const fetchWeather = async () => {
@@ -36,8 +23,8 @@ const WeatherScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>{weather.name}</Text>
-      <Text>{weather.main.temp}</Text>
+      <Text style={styles.location}>{weather.name}</Text>
+      <Text style={styles.temp}>{Math.round(weather.main.temp)}</Text>
     </View>
   );
 };
@@ -47,7 +34,17 @@ export default WeatherScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  location: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  temp: {
+    fontSize: 150,
+    fontWeight: 'bold',
+    color: 'grey',
   },
 });
