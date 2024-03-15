@@ -1,12 +1,3 @@
-type Weather = {
-  name: string;
-  main: MainWeather;
-};
-
-type WeatherForecast = {
-  main: MainWeather;
-};
-
 type MainWeather = {
   main: {
     temp: number;
@@ -17,5 +8,16 @@ type MainWeather = {
     humidity: number;
     sea_level: number;
     grnd_level: number;
+    dt: number;
   };
 };
+type Weather = {
+  name: string;
+  main: MainWeather;
+};
+
+type WeatherForecast = {
+  main: MainWeather;
+};
+
+export type { MainWeather, Weather, WeatherForecast };
